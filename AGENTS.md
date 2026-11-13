@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- The login/sign-up UI lives in src/components/AuthPage.tsx rendered at `/`; it is a static visual port (no real auth) — wire auth through Lovable Cloud if added.

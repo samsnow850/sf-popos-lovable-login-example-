@@ -1,0 +1,9 @@
+{"capabilities":[
+{"capability":"code/UI","source":"Vite React login & sign-up screen","outcome":"ported to / route","status":"verified","next_action":null},
+{"capability":"assets","source":"src/assets (3 images)","outcome":"hosted asset pointers","status":"verified","next_action":null},
+{"capability":"theme/fonts","source":"index.css, index.html","outcome":"merged into styles.css and root head","status":"verified","next_action":null},
+{"capability":"database/records","source":"none","outcome":"not applicable","status":"verified","next_action":null},
+{"capability":"auth","source":"static visual controls only (README)","outcome":"kept static, matching source","status":"accepted","next_action":"Optional: wire real sign-in with Lovable Cloud"},
+{"capability":"AI (GEMINI_API_KEY)","source":".env.example template only, no call sites","outcome":"not used","status":"verified","next_action":null},
+{"capability":"secrets/webhooks/schedules","source":"none","outcome":"not applicable","status":"verified","next_action":null}
+]}
