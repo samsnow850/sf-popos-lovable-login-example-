@@ -30,4 +30,4 @@ use the editor.
 <!-- LOVABLE:END -->
 
 - The login/sign-up UI lives in src/components/AuthPage.tsx rendered at `/`; it is a static visual port (no real auth) — wire auth through Lovable Cloud if added.
-- Use a single narrow auth layout at every viewport and accessible reset dialogs; frontend submissions must not claim account creation or email delivery without an auth service.
+- Use a split showcase-and-form layout on desktop, a narrow form on mobile, and accessible reset dialogs; frontend submissions must not claim account creation or email delivery without an auth service.

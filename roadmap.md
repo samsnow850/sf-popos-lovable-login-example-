@@ -2,3 +2,5 @@
 - [x] Update mobile signup fields and password confirmation.
 - [x] Add an email-based forgot-password form without implying emails are sent.
 - [x] Verify phone screens and save changes.
+- [x] Restore the padded desktop image-left, form-right layout using SF POPOS imagery while keeping mobile unchanged.
+- [x] Verify desktop and mobile login and signup, then save changes.
