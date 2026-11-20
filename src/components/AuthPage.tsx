@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
-import { Eye, EyeOff, Fingerprint, X } from 'lucide-react';
+import { Eye, EyeOff, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import robotaxiTrioAsset from '@/assets/robotaxi-trio.png.asset.json';
 const robotaxiTrio = robotaxiTrioAsset.url;
@@ -24,7 +24,6 @@ export function AuthPage() {
   // Signup fields
   const [username, setUsername] = useState('');
   const [displayName, setDisplayName] = useState('');
-  const [signupWithPassword, setSignupWithPassword] = useState(false);
   const [signupPassword, setSignupPassword] = useState('');
   const [showSignupPassword, setShowSignupPassword] = useState(false);
 
@@ -48,7 +47,6 @@ export function AuthPage() {
 
   const switchMode = (nextMode: AuthMode) => {
     setMode(nextMode);
-    setSignupWithPassword(false);
   };
 
   return (
@@ -295,14 +293,6 @@ export function AuthPage() {
                   >
                     Continue with Email
                   </button>
-
-                  <button
-                    type="button"
-                    className="w-full h-11 bg-black border border-white/12 text-white font-medium text-[13.5px] rounded-xl hover:bg-white/[0.06] hover:border-white/20 active:scale-[0.98] inline-flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 whitespace-nowrap cursor-pointer"
-                  >
-                    <Fingerprint className="w-4 h-4 text-white/75" aria-hidden="true" />
-                    <span>Sign in with a passkey</span>
-                  </button>
                 </div>
               </form>
 
@@ -416,103 +406,48 @@ export function AuthPage() {
                   onChange={setDisplayName}
                 />
 
-                {/* Sign-in Method Segmented Switcher */}
-                <div>
-                  <span
-                    id="signup-method-label"
+                <div className="mt-5">
+                  <label
+                    htmlFor="signup-password"
                     className="block text-[13px] font-medium text-white/85 mb-1.5"
                   >
-                    Sign-in method
-                  </span>
-                  <div
-                    role="tablist"
-                    aria-labelledby="signup-method-label"
-                    className="grid grid-cols-2 gap-1 rounded-xl bg-[#111111] p-1 border border-white/10"
-                  >
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={!signupWithPassword}
-                      onClick={() => setSignupWithPassword(false)}
-                      className={`h-[38px] rounded-lg text-[13px] font-medium inline-flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 transition-all duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${
-                        !signupWithPassword
-                          ? 'bg-white text-black shadow-sm'
-                          : 'text-white/55 hover:text-white'
-                      }`}
-                    >
-                      <Fingerprint className="w-3.5 h-3.5" aria-hidden="true" />
-                      <span>Passkey</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={signupWithPassword}
-                      onClick={() => setSignupWithPassword(true)}
-                      className={`h-[38px] rounded-lg text-[13px] font-medium inline-flex items-center justify-center whitespace-nowrap shrink-0 transition-all duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${
-                        signupWithPassword
-                          ? 'bg-white text-black shadow-sm'
-                          : 'text-white/55 hover:text-white'
-                      }`}
-                    >
-                      <span>Password</span>
-                    </button>
-                  </div>
-
-                  {!signupWithPassword ? (
-                    <p className="mt-2 text-[12px] text-white/45 leading-relaxed">
-                      Sign in with Face ID, Touch ID or your device PIN — nothing to remember.
-                    </p>
-                  ) : (
-                    <div className="mt-3">
-                      <label
-                        htmlFor="signup-password"
-                        className="block text-[13px] font-medium text-white/85 mb-1.5"
+                    Password
+                  </label>
+                  <div className="relative">
+                    <input
+                      id="signup-password"
+                      name="password"
+                      type={showSignupPassword ? 'text' : 'password'}
+                      autoComplete="new-password"
+                      value={signupPassword}
+                      onChange={(e) => setSignupPassword(e.target.value)}
+                      className="h-11 w-full rounded-xl bg-brand-gray border border-white/[0.08] hover:border-white/[0.16] px-4 pr-11 text-[14px] text-white placeholder:text-white/25 transition-colors focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/20"
+                    />
+                    {signupPassword.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => setShowSignupPassword((prev) => !prev)}
+                        aria-label={showSignupPassword ? 'Hide password' : 'Show password'}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/50 hover:text-white transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 cursor-pointer"
                       >
-                        Password
-                      </label>
-                      <div className="relative">
-                        <input
-                          id="signup-password"
-                          name="password"
-                          type={showSignupPassword ? 'text' : 'password'}
-                          autoComplete="new-password"
-                          value={signupPassword}
-                          onChange={(e) => setSignupPassword(e.target.value)}
-                          className="h-11 w-full rounded-xl bg-brand-gray border border-white/[0.08] hover:border-white/[0.16] px-4 pr-11 text-[14px] text-white placeholder:text-white/25 transition-colors focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/20"
-                        />
-                        {signupPassword.length > 0 && (
-                          <button
-                            type="button"
-                            onClick={() => setShowSignupPassword((prev) => !prev)}
-                            aria-label={showSignupPassword ? 'Hide password' : 'Show password'}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/50 hover:text-white transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 cursor-pointer"
-                          >
-                            {showSignupPassword ? (
-                              <EyeOff className="w-4 h-4" aria-hidden="true" />
-                            ) : (
-                              <Eye className="w-4 h-4" aria-hidden="true" />
-                            )}
-                          </button>
+                        {showSignupPassword ? (
+                          <EyeOff className="w-4 h-4" aria-hidden="true" />
+                        ) : (
+                          <Eye className="w-4 h-4" aria-hidden="true" />
                         )}
-                      </div>
-                      <p className="mt-1.5 text-[11.5px] text-white/45">
-                        Requires at least 8 characters.
-                      </p>
-                    </div>
-                  )}
+                      </button>
+                    )}
+                  </div>
+                  <p className="mt-1.5 text-[11.5px] text-white/45">
+                    Requires at least 8 characters.
+                  </p>
                 </div>
 
                 <button
                   type="submit"
                   className="w-full h-12 bg-white text-black font-semibold text-[14px] rounded-xl hover:bg-white/90 active:scale-[0.98] inline-flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black whitespace-nowrap cursor-pointer mt-1"
                 >
-                  {!signupWithPassword && (
-                    <Fingerprint className="w-4 h-4" aria-hidden="true" />
-                  )}
-                  <span>
-                    {signupWithPassword ? 'Create account' : 'Create with a passkey'}
-                  </span>
+                  <span>Create account</span>
                 </button>
               </form>
 
@@ -595,7 +530,7 @@ export function AuthPage() {
 
               <p className="mt-3 text-[13.5px] leading-relaxed text-white/70">
                 Passwords can&apos;t be reset by email yet. Sign in another way you&apos;ve linked,
-                for example, Apple, Google, X, or Passkey. Then set a new password in{' '}
+                for example, Apple, Google, or X. Then set a new password in{' '}
                 <span className="font-medium text-white/90">Settings &gt; Sign-In Methods</span>.
               </p>
 
