@@ -50,18 +50,10 @@ export function AuthPage() {
       <main className="min-h-svh w-full lg:flex lg:h-svh lg:min-h-[760px] lg:gap-4 lg:p-4">
         <aside className="relative hidden h-full w-[52%] shrink-0 overflow-hidden rounded-3xl bg-card lg:block" aria-label="SF POPOS garden showcase">
           <img src={gardenAsset.url} alt="Illustrated view of a lush San Francisco rooftop garden with benches and the city skyline" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="relative flex flex-col items-center px-8 pt-10 text-center text-primary-foreground xl:px-12 xl:pt-14">
-            <Button variant="ghost" onClick={() => switchMode('login')} className="h-auto gap-3 p-0 text-primary-foreground hover:bg-transparent hover:text-primary-foreground" aria-label="SF POPOS home">
-              <img src={logoAsset.url} alt="" className="h-14 w-12 object-contain" />
-              <span className="text-[23px] font-semibold">SF POPOS</span>
-            </Button>
-            <h2 className="mt-5 max-w-[460px] text-[32px] font-medium leading-tight xl:text-[38px]">A little open space.<br />A whole new city.</h2>
-            <p className="mt-3 max-w-[400px] text-sm leading-relaxed">Discover San Francisco’s privately owned public open spaces.</p>
-          </div>
         </aside>
         <section className="mx-auto flex min-h-svh w-full max-w-[440px] flex-col justify-center px-6 py-8 sm:px-8 lg:min-h-0 lg:max-w-none lg:flex-1 lg:overflow-y-auto lg:px-12 lg:py-6 xl:px-20">
         <div className="mx-auto w-full max-w-[440px] lg:my-auto">
-        <Button variant="ghost" onClick={() => switchMode('login')} className="mb-7 h-auto justify-start gap-3 self-start p-0 hover:bg-transparent lg:hidden" aria-label="SF POPOS home">
+        <Button variant="ghost" onClick={() => switchMode('login')} className="mb-7 h-auto justify-start gap-3 self-start p-0 hover:bg-transparent" aria-label="SF POPOS home">
           <img src={logoAsset.url} alt="SF POPOS park and bridge logo" className="h-14 w-12 object-contain" />
           <span className="text-xl font-semibold">SF POPOS</span>
         </Button>
