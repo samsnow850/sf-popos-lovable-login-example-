@@ -1,0 +1,4 @@
+- [x] Replace robotaxi branding and imagery with SF POPOS and the uploaded logo.
+- [x] Update mobile signup fields and password confirmation.
+- [x] Add an email-based forgot-password form without implying emails are sent.
+- [x] Verify phone screens and save changes.
